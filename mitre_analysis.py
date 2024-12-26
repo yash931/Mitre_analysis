@@ -49,15 +49,6 @@ def fetch_techniques_for_tactic(tactic_code):
                     "technique": technique_name,
                     "sub_techniques": [st.strip() for st in sub_techniques.split("\n") if st.strip()]
                 })
-    else:
-        # If no table, look for alternative structures (e.g., <div> or <ul>)
-        items = soup.select("table-techniques")  # Update this selector based on actual HTML
-        for item in items:
-            technique_name = item.get_text(strip=True)
-            techniques.append({
-                "technique": technique_name,
-                "sub_techniques": []
-            })
 
     return techniques
 
